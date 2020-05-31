@@ -1,0 +1,166 @@
+﻿<Page
+    x:Class="Sudoku.Views.GamePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Sudoku.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="using:Sudoku.ViewModels" 
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <viewmodel:MainViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <SplitView x:Name="MenuSplitView" Grid.Column="0" Grid.RowSpan="12" DisplayMode="CompactOverlay" IsPaneOpen="False" CompactPaneLength="50" OpenPaneLength="150" Margin=" 0 0 10 0">
+            <SplitView.Pane>
+                <StackPanel Background="Gray">
+                    <Button FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE700;" Background="Transparent" Click="Button_Click"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE898;" Background="Transparent"/>
+                        <TextBlock Text="Upload" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE72C;" Background="Transparent"/>
+                        <TextBlock Text="New" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE751;" Background="Transparent"/>
+                        <TextBlock Text="Check" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE73E;" Background="Transparent"/>
+                        <TextBlock Text="Solve" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE74E;" Background="Transparent"/>
+                        <TextBlock Text="Save" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE74D;" Background="Transparent"/>
+                        <TextBlock Text="Clear" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </SplitView.Pane>
+        </SplitView>
+        <!--First line-->
+        <TextBox Grid.Column="2" Grid.Row="1" x:Name="x0y0" Text="{Binding Fields[0][0], Mode=TwoWay}" IsEnabled="{Binding Fields[0][0].Writable}" TextAlignment="Center" FontSize="60" BorderThickness="6 6 1 1"/>
+        <TextBox Grid.Column="3" Grid.Row="1" x:Name="x0y1" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 6 1 1"/>
+        <TextBox Grid.Column="4" Grid.Row="1" x:Name="x0y2" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 6 3 1"/>
+        <TextBox Grid.Column="5" Grid.Row="1" x:Name="x0y3" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 6 1 1"/>
+        <TextBox Grid.Column="6" Grid.Row="1" x:Name="x0y4" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 6 1 1"/>
+        <TextBox Grid.Column="7" Grid.Row="1" x:Name="x0y5" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 6 3 1"/>
+        <TextBox Grid.Column="8" Grid.Row="1" x:Name="x0y6" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 6 1 1"/>
+        <TextBox Grid.Column="9" Grid.Row="1" x:Name="x0y7" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 6 1 1"/>
+        <TextBox Grid.Column="10" Grid.Row="1" x:Name="x0y8" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 6 6 1"/>
+        <!--Second line-->
+        <TextBox Grid.Column="2" Grid.Row="2" x:Name="x1y0" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="6 1 1 1"/>
+        <TextBox Grid.Column="3" Grid.Row="2" x:Name="x1y1" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="4" Grid.Row="2" x:Name="x1y2" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 1"/>
+        <TextBox Grid.Column="5" Grid.Row="2" x:Name="x1y3" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 1"/>
+        <TextBox Grid.Column="6" Grid.Row="2" x:Name="x1y4" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="7" Grid.Row="2" x:Name="x1y5" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 1"/>
+        <TextBox Grid.Column="8" Grid.Row="2" x:Name="x1y6" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 1"/>
+        <TextBox Grid.Column="9" Grid.Row="2" x:Name="x1y7" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="10" Grid.Row="2" x:Name="x1y8" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 6 1"/>
+        <!--Third line-->
+        <TextBox Grid.Column="2" Grid.Row="3" x:Name="x2y0" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="6 1 1 6"/>
+        <TextBox Grid.Column="3" Grid.Row="3" x:Name="x2y1" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 6"/>
+        <TextBox Grid.Column="4" Grid.Row="3" x:Name="x2y2" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 6"/>
+        <TextBox Grid.Column="5" Grid.Row="3" x:Name="x2y3" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 6"/>
+        <TextBox Grid.Column="6" Grid.Row="3" x:Name="x2y4" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 6"/>
+        <TextBox Grid.Column="7" Grid.Row="3" x:Name="x2y5" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 6"/>
+        <TextBox Grid.Column="8" Grid.Row="3" x:Name="x2y6" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 6"/>
+        <TextBox Grid.Column="9" Grid.Row="3" x:Name="x2y7" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 6"/>
+        <TextBox Grid.Column="10" Grid.Row="3" x:Name="x2y8" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 6 6"/>
+        <!--Fourth line-->
+        <TextBox Grid.Column="2" Grid.Row="4" x:Name="x3y0" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="6 1 1 1"/>
+        <TextBox Grid.Column="3" Grid.Row="4" x:Name="x3y1" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="4" Grid.Row="4" x:Name="x3y2" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 1"/>
+        <TextBox Grid.Column="5" Grid.Row="4" x:Name="x3y3" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 1"/>
+        <TextBox Grid.Column="6" Grid.Row="4" x:Name="x3y4" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="7" Grid.Row="4" x:Name="x3y5" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 1"/>
+        <TextBox Grid.Column="8" Grid.Row="4" x:Name="x3y6" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 1"/>
+        <TextBox Grid.Column="9" Grid.Row="4" x:Name="x3y7" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="10" Grid.Row="4" x:Name="x3y8" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 6 1"/>
+        <!--Fifth line-->
+        <TextBox Grid.Column="2" Grid.Row="5" x:Name="x4y0" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="6 1 1 1"/>
+        <TextBox Grid.Column="3" Grid.Row="5" x:Name="x4y1" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="4" Grid.Row="5" x:Name="x4y2" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 1"/>
+        <TextBox Grid.Column="5" Grid.Row="5" x:Name="x4y3" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 1"/>
+        <TextBox Grid.Column="6" Grid.Row="5" x:Name="x4y4" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="7" Grid.Row="5" x:Name="x4y5" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 1"/>
+        <TextBox Grid.Column="8" Grid.Row="5" x:Name="x4y6" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 1"/>
+        <TextBox Grid.Column="9" Grid.Row="5" x:Name="x4y7" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="10" Grid.Row="5" x:Name="x4y8" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 6 1"/>
+        <!--Sixth line-->
+        <TextBox Grid.Column="2" Grid.Row="6" x:Name="x5y0" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="6 1 1 6"/>
+        <TextBox Grid.Column="3" Grid.Row="6" x:Name="x5y1" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 6"/>
+        <TextBox Grid.Column="4" Grid.Row="6" x:Name="x5y2" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 6"/>
+        <TextBox Grid.Column="5" Grid.Row="6" x:Name="x5y3" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 6"/>
+        <TextBox Grid.Column="6" Grid.Row="6" x:Name="x5y4" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 6"/>
+        <TextBox Grid.Column="7" Grid.Row="6" x:Name="x5y5" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 6"/>
+        <TextBox Grid.Column="8" Grid.Row="6" x:Name="x5y6" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 6"/>
+        <TextBox Grid.Column="9" Grid.Row="6" x:Name="x5y7" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 6"/>
+        <TextBox Grid.Column="10" Grid.Row="6" x:Name="x5y8" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 6 6"/>
+        
+        
+        <!--Seventh line-->
+        <TextBox Grid.Column="2" Grid.Row="7" x:Name="x6y0" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="6 1 1 1"/>
+        <TextBox Grid.Column="3" Grid.Row="7" x:Name="x6y1" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="4" Grid.Row="7" x:Name="x6y2" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 1"/>
+        <TextBox Grid.Column="5" Grid.Row="7" x:Name="x6y3" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 1"/>
+        <TextBox Grid.Column="6" Grid.Row="7" x:Name="x6y4" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="7" Grid.Row="7" x:Name="x6y5" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 1"/>
+        <TextBox Grid.Column="8" Grid.Row="7" x:Name="x6y6" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 1"/>
+        <TextBox Grid.Column="9" Grid.Row="7" x:Name="x6y7" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="10" Grid.Row="7" x:Name="x6y8" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 6 1"/>
+        <!--Eighth line-->
+        <TextBox Grid.Column="2" Grid.Row="8" x:Name="x7y0" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="6 1 1 1"/>
+        <TextBox Grid.Column="3" Grid.Row="8" x:Name="x7y1" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="4" Grid.Row="8" x:Name="x7y2" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 1"/>
+        <TextBox Grid.Column="5" Grid.Row="8" x:Name="x7y3" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 1"/>
+        <TextBox Grid.Column="6" Grid.Row="8" x:Name="x7y4" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="7" Grid.Row="8" x:Name="x7y5" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 1"/>
+        <TextBox Grid.Column="8" Grid.Row="8" x:Name="x7y6" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 1"/>
+        <TextBox Grid.Column="9" Grid.Row="8" x:Name="x7y7" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 1"/>
+        <TextBox Grid.Column="10" Grid.Row="8" x:Name="x7y8" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 6 1"/>
+        <!--Ninth line-->
+        <TextBox Grid.Column="2" Grid.Row="9" x:Name="x8y0" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="6 1 1 6"/>
+        <TextBox Grid.Column="3" Grid.Row="9" x:Name="x8y1" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 6"/>
+        <TextBox Grid.Column="4" Grid.Row="9" x:Name="x8y2" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 6"/>
+        <TextBox Grid.Column="5" Grid.Row="9" x:Name="x8y3" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 6"/>
+        <TextBox Grid.Column="6" Grid.Row="9" x:Name="x8y4" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 6"/>
+        <TextBox Grid.Column="7" Grid.Row="9" x:Name="x8y5" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 3 6"/>
+        <TextBox Grid.Column="8" Grid.Row="9" x:Name="x8y6" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 6"/>
+        <TextBox Grid.Column="9" Grid.Row="9" x:Name="x8y7" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 6"/>
+        <TextBox Grid.Column="10" Grid.Row="9" x:Name="x8y8" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 6 6"/>
+    </Grid>
+</Page>
