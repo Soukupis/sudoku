@@ -9,7 +9,6 @@ C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Core\Sudoku.exe
 C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Sudoku.build.appxrecipe
 C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\System.Runtime.dll
 C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Microsoft.UI.Xaml.Markup.winmd
-C:\Users\josep\OneDrive\Desktop\Sudoku\obj\x86\Debug\Sudoku.csprojAssemblyReference.cache
 C:\Users\josep\OneDrive\Desktop\Sudoku\obj\x86\Debug\App.g.i.cs
 C:\Users\josep\OneDrive\Desktop\Sudoku\obj\x86\Debug\App.g.cs
 C:\Users\josep\OneDrive\Desktop\Sudoku\obj\x86\Debug\XamlTypeInfo.g.cs
@@ -54,3 +53,4 @@ C:\Users\josep\OneDrive\Desktop\Sudoku\obj\x86\Debug\Views\GamePage.g.cs
 C:\Users\josep\OneDrive\Desktop\Sudoku\obj\x86\Debug\Views\GamePage.xaml
 C:\Users\josep\OneDrive\Desktop\Sudoku\obj\x86\Debug\Views\GamePage.xbf
 C:\Users\josep\OneDrive\Desktop\Sudoku\obj\x86\Debug\Microsoft.UI.Xaml.pri.xml
+C:\Users\josep\OneDrive\Desktop\Sudoku\obj\x86\Debug\Sudoku.csprojAssemblyReference.cache

@@ -8,17 +8,11 @@ using System.Threading.Tasks;
 
 namespace Sudoku.Models
 {
-    class Field : INotifyPropertyChanged
+    public class Field : INotifyPropertyChanged
     {
-        private int _column;
-        private int _row;
-        private int _square;
-        private int _index;
+        private int _value;
         private bool _writable;
-        public int Column { get => _column; set { _column = value; NotifyPropertyChanged(); } }
-        public int Row { get => _row; set { _row = value; NotifyPropertyChanged(); } }
-        public int Square { get => _square; set { _square = value; NotifyPropertyChanged(); } }
-        public int Index { get => _index; set { _index = value; NotifyPropertyChanged(); } }
+        public int Value { get => _value; set { _value = value; NotifyPropertyChanged(); } }
         public bool Writable { get => _writable; set { _writable = value; NotifyPropertyChanged(); } }
 
         public event PropertyChangedEventHandler PropertyChanged;
