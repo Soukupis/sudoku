@@ -6,10 +6,12 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Chat;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.Storage.Pickers;
+using Windows.System.Update;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -384,7 +386,7 @@ namespace Sudoku.Views
             {
                 if (CheckGameBoard(GameField))
                 {
-                    RemovingFields(5); //Medium difficulty
+                    RemovingFields(51); //Medium difficulty
                     return 1;
                 }
                 else
@@ -527,18 +529,51 @@ namespace Sudoku.Views
         
         private async void UploadTextFile(object sender, RoutedEventArgs e)
         {
-            /*
             FileOpenPicker openPicker = new FileOpenPicker();
             openPicker.ViewMode = PickerViewMode.Thumbnail;
             openPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             openPicker.FileTypeFilter.Add(".txt");
 
             StorageFile file = await openPicker.PickSingleFileAsync();
-            if(file!= null)
+
+            if(file != null)
             {
-                var stream = await file.OpenAsync(Window.Storage.FileAccessMode.Read); using
+                var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read); using
+                (StreamReader reader = new StreamReader(stream.AsStream()))
+                {
+                    string line;
+                    int lineCounter = 0;
+                    int textCounter = 0;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        for(int i = 0; i < 9; i++)
+                        {
+                            var numbers = line.Split(" ", StringSplitOptions.None);
+                            if(numbers[i] != "0")
+                            {
+                                GameField[lineCounter, i].Value = Convert.ToInt32(numbers[i]);
+                                GameField[lineCounter, i].Writable = false;
+                                TextFieldArray[textCounter].Text = numbers[i];
+                                TextFieldArray[textCounter].IsEnabled = GameField[lineCounter, i].Writable;
+                            }
+                            else
+                            {
+                                GameField[lineCounter, i].Value = 0;
+                                GameField[lineCounter, i].Writable = true;
+                                TextFieldArray[textCounter].Text = "";
+                                TextFieldArray[textCounter].IsEnabled = GameField[lineCounter, i].Writable;
+                            }
+                            textCounter++;
+                            
+                        }
+                        lineCounter++;
+
+                        Info.Text = line;
+                        Console.WriteLine(line);
+                    }
+                }
             }
-            */
+            
         }
         
     }
