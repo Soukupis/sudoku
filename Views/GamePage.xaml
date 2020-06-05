@@ -39,7 +39,7 @@
                 <StackPanel Background="Gray">
                     <Button FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE700;" Background="Transparent" Click="MenuButton"/>
                     <StackPanel Orientation="Horizontal">
-                        <Button FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE898;" Background="Transparent" Click="Button_Click"/>
+                        <Button FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE898;" Background="Transparent" Click="UploadTextFile"/>
                         <TextBlock Text="Upload" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">

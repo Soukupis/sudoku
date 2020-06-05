@@ -39,7 +39,7 @@
                 <StackPanel Background="Gray">
                     <Button x:ConnectionId='85' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE700;" Background="Transparent"                   />
                     <StackPanel Orientation="Horizontal">
-                        <Button FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE898;" Background="Transparent"/>
+                        <Button x:ConnectionId='90' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE898;" Background="Transparent"                       />
                         <TextBlock Text="Upload" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">

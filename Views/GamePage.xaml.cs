@@ -8,6 +8,8 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -521,5 +523,23 @@ namespace Sudoku.Views
         {
             GenerateNewProblem(2);
         }
+
+        
+        private async void UploadTextFile(object sender, RoutedEventArgs e)
+        {
+            /*
+            FileOpenPicker openPicker = new FileOpenPicker();
+            openPicker.ViewMode = PickerViewMode.Thumbnail;
+            openPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            openPicker.FileTypeFilter.Add(".txt");
+
+            StorageFile file = await openPicker.PickSingleFileAsync();
+            if(file!= null)
+            {
+                var stream = await file.OpenAsync(Window.Storage.FileAccessMode.Read); using
+            }
+            */
+        }
+        
     }
 }
