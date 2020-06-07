@@ -55,7 +55,7 @@
                         <TextBlock Text="Solve" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Button FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE74E;" Background="Transparent"/>
+                        <Button FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE74E;" Background="Transparent" Click="SaveTextFile"/>
                         <TextBlock Text="Save" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">

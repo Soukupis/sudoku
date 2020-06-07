@@ -12,6 +12,7 @@ using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.System.Update;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -56,7 +57,7 @@ namespace Sudoku.Views
             }
         }
         //Fill GameField
-        public void FillGameField()
+        public async void FillGameField()
         {
             TextFieldArray = new TextBox[]
             {
@@ -80,7 +81,10 @@ namespace Sudoku.Views
                 }
                 catch
                 {
-                    Info.Text = "něco se pokazilo";
+                    ClearGameBoard(1);
+                    var messageDialog = new MessageDialog("Něco se pokazilo");
+                    await messageDialog.ShowAsync();
+                    return;
                 }
                 
             }
@@ -344,49 +348,58 @@ namespace Sudoku.Views
         {
             List<int> numbers;
             Random rnd = new Random();
-            for(int i = 0; i < 81; i++)
+            for (int i = 0; i < 81; i++)
             {
                 int row = i / 9;
                 int col = i % 9;
                 numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-                if(GameField[row, col].Value == 0)
+                if (GameField[row, col].Value == 0)
                 {
-                    for(int j = 0; j < 9; j++)
+                    for (int j = 0; j < 9; j++)
                     {
-                        var value = numbers[rnd.Next(numbers.Count)];
-                        if(NotInRow(value, row, GameField, 1))
+                        if(numbers.Count > 0)
                         {
-                            if(NotInCol(value, col, GameField, 1))
+                            var value = numbers[rnd.Next(numbers.Count)];
+                            if (NotInRow(value, row, GameField, 1))
                             {
-                                if(NotInSquare(value, col, row, GameField,1))
+                                if (NotInCol(value, col, GameField, 1))
                                 {
-                                    GameField[row, col] = new Field { Value = value, Writable = false };
-                                    TextFieldArray[i].Text = value.ToString();
-                                    TextFieldArray[i].IsEnabled = GameField[row, col].Writable;
+                                    if (NotInSquare(value, col, row, GameField, 1))
+                                    {
+                                        GameField[row, col] = new Field { Value = value, Writable = false };
+                                        TextFieldArray[i].Text = value.ToString();
+                                        TextFieldArray[i].IsEnabled = GameField[row, col].Writable;
+                                    }
+                                    else
+                                    {
+                                        numbers.Remove(value);
+                                    }
                                 }
                                 else
                                 {
                                     numbers.Remove(value);
                                 }
+
                             }
                             else
                             {
                                 numbers.Remove(value);
                             }
-                            
-                            }
+                        }
                         else
                         {
-                            numbers.Remove(value);
+                            ClearGameBoard(2);
+                            GenerateNewProblem(2);
+                            return 0;
                         }
                     }
                 }
             }
-            if(mode == 1)
+            if (mode == 1)
             {
                 if (CheckGameBoard(GameField))
                 {
-                    RemovingFields(51); //Medium difficulty
+                    RemovingFields(5); //Medium difficulty
                     return 1;
                 }
                 else
@@ -409,6 +422,7 @@ namespace Sudoku.Views
                     return 0;
                 }
             }
+
 
         }
         //Metoda pro odstranění políček
@@ -488,6 +502,183 @@ namespace Sudoku.Views
             }
             return true;
         }
+
+
+
+        public async void SolveCurrentProblem()
+        {
+            bool notSolved = true;
+            int squareCount = 1;
+            int a1 = 0;
+            int a2 = 0;
+            int b1 = 0;
+            int b2 = 0;
+
+            while (notSolved)
+            {
+                switch (squareCount)
+                {
+                    case 1:
+                        a1 = 0;
+                        a2 = 2;
+                        b1 = 0;
+                        b2 = 2;
+                        break;
+                    case 2:
+                        a1 = 0;
+                        a2 = 2;
+                        b1 = 3;
+                        b2 = 5;
+                        break;
+                    case 3:
+                        a1 = 0;
+                        a2 = 2;
+                        b1 = 6;
+                        b2 = 8;
+                        break;
+                }
+                //Možnosti pro čtverec
+                var possibleSquareValues = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+                for (int j = a1; j <= a2; j++)
+                {
+                    for (int k = b1; k <= b2; k++)
+                    {
+                        if (possibleSquareValues.Contains(GameField[j, k].Value))
+                        {
+                            possibleSquareValues.Remove(GameField[j, k].Value);
+                        }
+                    }
+                }
+                //Možnosti pro pole
+                var possibleCellValue = new List<int>[3, 3];
+                var temp1 = 0;
+                var temp2 = 0;
+                for (int j = a1; j <= a2; j++)
+                {
+                    for (int k = b1; k <= b2; k++)
+                    {
+                        if(GameField[j, k].Writable == true)
+                        {
+                            possibleCellValue[temp1, temp2] = new List<int>();
+                            foreach (var pv in possibleSquareValues)
+                            {
+                                if (NotInRow(pv, j, GameField, 1))
+                                {
+                                    if (NotInCol(pv, k, GameField, 1))
+                                    {
+                                        possibleCellValue[temp1, temp2].Add(pv);
+                                        Info.Text += $"row: {j} coll: {k} = {pv}\n";
+                                    }
+                                    else
+                                    {
+                                        continue;
+                                    }
+
+                                }
+                                else
+                                {
+                                    continue;
+                                }
+                            }
+                        }
+                        temp2++;
+                    }
+                    temp2 = 0;
+                    temp1++;
+                }
+                //Otestovani zda nekde je pouze 1 možnost pro čísla
+                foreach(var i in possibleSquareValues)
+                {
+                    temp1 = 0;
+                    temp2 = 0;
+                    var pvc = 0;
+                    for (int j = a1; j <= a2; j++)
+                    {
+                        for (int k = b1; k <= b2; k++)
+                        {
+                            if(possibleCellValue[temp1, temp2] != null)
+                            {
+                                foreach (var l in possibleCellValue[temp1, temp2])
+                                {
+                                    if (l == i)
+                                    {
+                                        pvc++;
+                                    }
+                                }
+                            }
+                            temp2++;
+                        }
+                        temp1++;
+                        temp2 = 0;
+                    }
+                    temp1 = 0;
+                    temp2 = 0;
+                    if (pvc == 1)
+                    {
+                        for (int j = a1; j <= a2; j++)
+                        {
+                            for (int k = b1; k <= b2; k++)
+                            {
+                                if(possibleCellValue[temp1, temp2] != null)
+                                {
+                                    foreach (var l in possibleCellValue[temp1, temp2])
+                                    {
+                                        if (l == i)
+                                        {
+                                            GameField[j, k].Value = i;
+                                            GameField[j, k].Writable = false;
+                                        }
+                                    }
+                                }
+                                temp2++;
+                            }
+                            temp2 = 0;
+                            temp1++;
+                        }
+                    }
+                }
+                //Otestovaní zda nekde je pouze 1 možnost pro políčka
+                temp1 = 0;
+                temp2 = 0;
+                for (int j = a1; j <= a2; j++)
+                {
+                    for (int k = b1; k <= b2; k++)
+                    {
+                        if(possibleCellValue[temp1,temp2] != null)
+                        {
+                            if (possibleCellValue[temp1, temp2].Count == 1)
+                            {
+                                GameField[j, k].Value = possibleCellValue[temp1, temp2][0];
+                                GameField[j, k].Writable = false;
+                            }
+                        }
+                        temp2++;
+                    }
+                    temp2 = 0;
+                    temp1++;
+                }
+                //Zapsání do pole
+                for (int i = 0; i < 81; i++)
+                {
+                    int row = i / 9;
+                    int col = i % 9;
+
+                    TextFieldArray[i].Text = GameField[row, col].Value.ToString();
+                    TextFieldArray[i].IsEnabled = GameField[row, col].Writable;
+
+                }
+                if(squareCount == 3)
+                {
+                   notSolved = false;
+                }
+                squareCount++;
+
+
+            }
+        }
+
+
+
         private void MenuButton(object sender, RoutedEventArgs e)
         {
             if (MenuSplitView.IsPaneOpen == false)
@@ -509,23 +700,25 @@ namespace Sudoku.Views
             ClearGameBoard(1);
             GenerateNewProblem(1);
         }
-        private void Check(object sender, RoutedEventArgs e)
+        private async void Check(object sender, RoutedEventArgs e)
         {
             FillGameField();
             if (CheckProblem())
             {
-                Info.Text = "Jsi husty";
+                var messageDialog = new MessageDialog("Úspěšně jste vyřešil problém");
+                await messageDialog.ShowAsync();
             }
             else
             {
-                Info.Text = "Bohužel";
+                var messageDialog = new MessageDialog("Problěm nebyl vyřešen úspěšně");
+                await messageDialog.ShowAsync();
             }
         }
         private void SolveProblem(object sender, RoutedEventArgs e)
         {
-            GenerateNewProblem(2);
+            //GenerateNewProblem(2);
+            SolveCurrentProblem();
         }
-
         
         private async void UploadTextFile(object sender, RoutedEventArgs e)
         {
@@ -546,35 +739,107 @@ namespace Sudoku.Views
                     int textCounter = 0;
                     while ((line = reader.ReadLine()) != null)
                     {
-                        for(int i = 0; i < 9; i++)
+                        for (int i = 0; i < 9; i++)
                         {
-                            var numbers = line.Split(" ", StringSplitOptions.None);
-                            if(numbers[i] != "0")
+                            if(!(lineCounter > 8))
                             {
-                                GameField[lineCounter, i].Value = Convert.ToInt32(numbers[i]);
-                                GameField[lineCounter, i].Writable = false;
-                                TextFieldArray[textCounter].Text = numbers[i];
-                                TextFieldArray[textCounter].IsEnabled = GameField[lineCounter, i].Writable;
+                                var numbers = line.Split(" ", StringSplitOptions.None);
+                                var numberCheckList = new List<int> {0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+                                foreach (var a in numbers)
+                                {
+                                    if(numbers.Length > 10)
+                                    {
+                                        ClearGameBoard(1);
+                                        var messageDialog = new MessageDialog("Soubor obsahuje neplatný počet znaků");
+                                        await messageDialog.ShowAsync();
+                                        return;
+                                    }
+                                    try
+                                    { 
+                                        
+                                        if (a != "")
+                                        {
+                                            var cell = Convert.ToInt32(a);
+                                            if (numberCheckList.Contains((int)cell))
+                                            {
+                                                continue;
+                                            }
+                                            else
+                                            {
+                                                throw new SystemException();
+                                            }
+                                        }  
+                                        
+                                    }
+                                    catch
+                                    {
+                                        ClearGameBoard(1);
+                                        var messageDialog = new MessageDialog("Soubor obsahuje neplatné znaky, prosím zadejte čísla v rozsahu 0-9");
+                                        await  messageDialog.ShowAsync();
+                                        return;
+                                    }
+
+                                }
+                                if (numbers[i] != "0")
+                                {
+                                    GameField[lineCounter, i].Value = Convert.ToInt32(numbers[i]);
+                                    GameField[lineCounter, i].Writable = false;
+                                    TextFieldArray[textCounter].Text = numbers[i];
+                                    TextFieldArray[textCounter].IsEnabled = GameField[lineCounter, i].Writable;
+                                }
+                                else
+                                {
+                                    GameField[lineCounter, i].Value = 0;
+                                    GameField[lineCounter, i].Writable = true;
+                                    TextFieldArray[textCounter].Text = "";
+                                    TextFieldArray[textCounter].IsEnabled = GameField[lineCounter, i].Writable;
+                                }
                             }
                             else
                             {
-                                GameField[lineCounter, i].Value = 0;
-                                GameField[lineCounter, i].Writable = true;
-                                TextFieldArray[textCounter].Text = "";
-                                TextFieldArray[textCounter].IsEnabled = GameField[lineCounter, i].Writable;
+                                ClearGameBoard(1);
+                                var messageDialog = new MessageDialog("Soubor obsahuje moc velký počet řádků");
+                                await messageDialog.ShowAsync();
+                                return;
                             }
                             textCounter++;
-                            
                         }
                         lineCounter++;
-
-                        Info.Text = line;
-                        Console.WriteLine(line);
                     }
                 }
             }
             
         }
-        
+
+        private async void SaveTextFile(object sender, RoutedEventArgs e)
+        {
+            FileSavePicker savePicker = new FileSavePicker();
+            savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
+            savePicker.SuggestedFileName = "New Document";
+            string sudokuString = "";
+            int counter = 0;
+            for(int i = 0; i < 81; i++)
+            {
+                int row = i / 9;
+                int col = i % 9;
+                if (counter % 9 == 8)
+                {
+                    sudokuString += $"{GameField[row, col].Value}\n";
+                }
+                else
+                {
+                    sudokuString += $"{GameField[row, col].Value} ";
+                }
+                counter++;
+            }
+
+            StorageFile file = await savePicker.PickSaveFileAsync();
+            if (file != null)
+            {
+                CachedFileManager.DeferUpdates(file);
+                await FileIO.WriteTextAsync(file, sudokuString);
+            }
+        }
     }
 }
