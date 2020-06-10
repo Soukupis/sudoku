@@ -157,6 +157,5 @@
         <TextBox Grid.Column="8" Grid.Row="9" x:Name="x8y6" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 6"/>
         <TextBox Grid.Column="9" Grid.Row="9" x:Name="x8y7" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 6"/>
         <TextBox Grid.Column="10" Grid.Row="9" x:Name="x8y8" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 6 6"/>
-        <TextBlock Grid.Column="11" Grid.Row="10" x:Name="Info"/>
     </Grid>
 </Page>

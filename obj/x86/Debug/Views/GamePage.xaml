@@ -37,29 +37,29 @@
         <SplitView x:ConnectionId='2' x:Name="MenuSplitView" Grid.Column="0" Grid.RowSpan="12" DisplayMode="CompactOverlay" IsPaneOpen="False" CompactPaneLength="50" OpenPaneLength="150" Margin=" 0 0 10 0">
             <SplitView.Pane>
                 <StackPanel Background="Gray">
-                    <Button x:ConnectionId='85' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE700;" Background="Transparent"                   />
+                    <Button x:ConnectionId='84' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE700;" Background="Transparent"                   />
                     <StackPanel Orientation="Horizontal">
-                        <Button x:ConnectionId='91' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE898;" Background="Transparent"                       />
+                        <Button x:ConnectionId='90' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE898;" Background="Transparent"                       />
                         <TextBlock Text="Upload" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Button x:ConnectionId='90' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE72C;" Background="Transparent"                   />
+                        <Button x:ConnectionId='89' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE72C;" Background="Transparent"                   />
                         <TextBlock Text="New" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Button x:ConnectionId='89' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE751;" Background="Transparent"              />
+                        <Button x:ConnectionId='88' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE751;" Background="Transparent"              />
                         <TextBlock Text="Check" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Button x:ConnectionId='88' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE73E;" Background="Transparent"                     />
+                        <Button x:ConnectionId='87' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE73E;" Background="Transparent"                     />
                         <TextBlock Text="Solve" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Button x:ConnectionId='87' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE74E;" Background="Transparent"                     />
+                        <Button x:ConnectionId='86' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE74E;" Background="Transparent"                     />
                         <TextBlock Text="Save" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Button x:ConnectionId='86' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE74D;" Background="Transparent"                       />
+                        <Button x:ConnectionId='85' FontSize="25" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" Content="&#xE74D;" Background="Transparent"                       />
                         <TextBlock Text="Clear" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                 </StackPanel>
@@ -157,7 +157,6 @@
         <TextBox x:ConnectionId='81' Grid.Column="8" Grid.Row="9" x:Name="x8y6" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="3 1 1 6"/>
         <TextBox x:ConnectionId='82' Grid.Column="9" Grid.Row="9" x:Name="x8y7" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 1 6"/>
         <TextBox x:ConnectionId='83' Grid.Column="10" Grid.Row="9" x:Name="x8y8" Text=" " TextAlignment="Center" FontSize="60" BorderThickness="1 1 6 6"/>
-        <TextBlock x:ConnectionId='84' Grid.Column="11" Grid.Row="10" x:Name="Info"/>
     </Grid>
 </Page>
 

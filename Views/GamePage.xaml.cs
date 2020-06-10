@@ -1,25 +1,13 @@
 ﻿using Sudoku.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel.Chat;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.Storage.Pickers;
-using Windows.System.Update;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace Sudoku.Views
 {
@@ -75,18 +63,20 @@ namespace Sudoku.Views
             {
                 int row = i / 9;
                 int col = i % 9;
-                try
+                if(TextFieldArray[i].IsEnabled == true && TextFieldArray[i].Text != "")
                 {
-                    GameField[row, col].Value = Convert.ToInt32(TextFieldArray[i].Text);
+                    try
+                    {
+                        GameField[row, col].Value = Convert.ToInt32(TextFieldArray[i].Text);
+                    }
+                    catch
+                    {
+                        ClearGameBoard(2);
+                        var messageDialog = new MessageDialog("Zadané hodnoty neodpovídájí čislicím 1-9");
+                        await messageDialog.ShowAsync();
+                        return;
+                    }
                 }
-                catch
-                {
-                    ClearGameBoard(1);
-                    var messageDialog = new MessageDialog("Zadané hodnoty neodpovídájí čislicím 1-9");
-                    await messageDialog.ShowAsync();
-                    return;
-                }
-                
             }
         }
         /*
@@ -837,7 +827,7 @@ namespace Sudoku.Views
             }
             else
             {
-                var messageDialog = new MessageDialog("Problěm nebyl vyřešen úspěšně");
+                var messageDialog = new MessageDialog("Problém nebyl vyřešen úspěšně");
                 await messageDialog.ShowAsync();
             }
         }
