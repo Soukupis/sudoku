@@ -27,12 +27,12 @@ namespace Sudoku.Views
     {
         Field[,] GameField;
         TextBox[] TextFieldArray;
-        int temp;
         public GamePage()
         {
             this.InitializeComponent();
-            temp = 0;
+            //Sudoku grid 9x9 hodnot (Field)
             GameField = new Field[9, 9];
+            //Sudoku grid TextBoxů
             TextFieldArray = new TextBox[]
             {
                 x0y0, x0y1, x0y2, x0y3, x0y4, x0y5, x0y6,x0y7, x0y8,
@@ -45,18 +45,18 @@ namespace Sudoku.Views
                 x7y0, x7y1, x7y2, x7y3, x7y4, x7y5, x7y6,x7y7, x7y8,
                 x8y0, x8y1, x8y2, x8y3, x8y4, x8y5, x8y6,x8y7, x8y8
             };
-            for (int i = 0; i <= 8; i++)
+            //Generace gridu, při zapnutí aplikace
+            for (int i = 0; i < 81; i++)
             {
-                for (int j = 0; j <= 8; j++)
-                {
-                    GameField[i, j] = new Field { Value = 0, Writable = false};
-                    TextFieldArray[temp].Text = "";
-                    TextFieldArray[temp].IsEnabled = GameField[i, j].Writable;
-                    temp++;
-                }
+                int row = i / 9;
+                int col = i % 9;
+                GameField[row, col] = new Field { Value = 0, Writable = false };
+                TextFieldArray[i].Text = "";
+                TextFieldArray[i].IsEnabled = GameField[row, col].Writable;
             }
+            
         }
-        //Fill GameField
+        //Pokud uživatel řeší problém a chce si ho zkontrolovat, tak touhle metodou se zapíšou do GameField jeho hodnoty
         public async void FillGameField()
         {
             TextFieldArray = new TextBox[]
@@ -82,43 +82,43 @@ namespace Sudoku.Views
                 catch
                 {
                     ClearGameBoard(1);
-                    var messageDialog = new MessageDialog("Něco se pokazilo");
+                    var messageDialog = new MessageDialog("Zadané hodnoty neodpovídájí čislicím 1-9");
                     await messageDialog.ShowAsync();
                     return;
                 }
                 
             }
         }
-        //Metoda pro vymazání všech uživatelem zadané hodnoty
+        /*
+         Metoda, která maže hodnoty
+         mode 1 - vymažou se všechny hodnoty
+         mdoe 2 - vymažou se pouze hodnoty zadaný uživatelem
+         */
         public void ClearGameBoard(int mode)
         {
-            temp = 0;
-            for (int i = 0; i <= 8; i++)
+            for(int i = 0; i < 81; i++)
             {
-                for (int j = 0; j <= 8; j++)
+                int row = i / 9;
+                int col = i % 9;
+                if (mode == 1)
                 {
-                    if(mode == 1)
+                    GameField[row, col].Value = 0;
+                    GameField[row, col].Writable = false;
+                    TextFieldArray[i].Text = "";
+                    TextFieldArray[i].IsEnabled = false;
+                }
+                else
+                {
+                    if (GameField[row, col].Writable == true)
                     {
-                        GameField[i, j].Value = 0;
-                        GameField[i, j].Writable = false;
-                        TextFieldArray[temp].Text = "";
-                        TextFieldArray[temp].IsEnabled = false;
-                        temp++;
-                    }
-                    else
-                    {
-                        if(GameField[i, j].Writable == true)
-                        {
-                            GameField[i, j].Value = 0;
-                            TextFieldArray[temp].Text = "";
-                            
-                        }
-                        temp++;
+                        GameField[row, col].Value = 0;
+                        TextFieldArray[i].Text = "";
                     }
                 }
             }
+            int temp = 0;
         }
-        //Metoda co kontroluje zda je hrací pole plné
+        //Metoda, která kontroluje, zda je hrací pole plné
         public bool CheckGameBoard(Field[,] FieldArray)
         {
             for(int i = 0; i < 9; i++)
@@ -133,8 +133,11 @@ namespace Sudoku.Views
             }
             return true;
         }
-        //Metoda co kontroluje zda je číslo možné zapsat do dané řady
-        //Mode = 1 - Generate 2 - Check
+        /*
+         Metoda co kontroluje zda je číslo možné zapsat do dané řady
+         mode 1 - použito při generaci, kde číslo nesmí být obsaženo v řadě ani jednou, aby se mohlo zapsat
+         mode 2 - použito při kontrole, kde číslo může být obsaženo v řadě pouze jednou, aby řešení bylo validní
+        */
         public bool NotInRow(int number, int row, Field[,] FieldArray,int mode)
         {
             int count = 0;
@@ -154,7 +157,6 @@ namespace Sudoku.Views
                         count++;
                     }
                 }
-                
             }
             if(mode == 2)
             {
@@ -170,8 +172,11 @@ namespace Sudoku.Views
             return true;
             
         }
-        //Metoda co kontroluje zda je číslo možné zapsat do daného sloupce
-        //Mode = 1 - Generate 2 - Check
+        /*
+         Metoda co kontroluje zda je číslo možné zapsat do daného sloupce
+         mode 1 - použito při generaci, kde číslo nesmí být obsaženo ve sloupci ani jednou, aby se mohlo zapsat
+         mode 2 - použito při kontrole, kde číslo může být obsaženo ve sloupci pouze jednou, aby řešení bylo validní
+        */
         public bool NotInCol(int number, int col, Field[,] FieldArray, int mode)
         {
             int count = 0;
@@ -206,7 +211,11 @@ namespace Sudoku.Views
             }
             return true;
         }
-        //Metoda co kontroluje zda je číslo možné zapsat do daného čtverce
+        /*
+         Metoda co kontroluje zda je číslo možné zapsat do daného čtverce
+         mode 1 - použito při generaci, kde číslo nesmí být obsaženo v čtverci ani jednou, aby se mohlo zapsat
+         mode 2 - použito při kontrole, kde číslo může být obsaženo v čtverci pouze jednou, aby řešení bylo validní
+        */
         public bool NotInSquare(int number, int col,int row, Field[,] FieldArray, int mode)
         {
             List<int> square = new List<int>();
@@ -312,8 +321,6 @@ namespace Sudoku.Views
                     }
                 }
             }
-            
-
             if(mode == 1)
             {
                 if (square.Contains(number))
@@ -340,11 +347,10 @@ namespace Sudoku.Views
                     return true;
                 }
             }
-            
             return true;
         }
-        //Metoda pro vytvoření kompletního sudoku
-        public int GenerateNewProblem(int mode)
+        //Metoda, která vygeneruje kompletně vyřešené sudoku a potom vymaže políčka, čím vznikne validní problém
+        public int GenerateNewProblem()
         {
             List<int> numbers;
             Random rnd = new Random();
@@ -379,7 +385,6 @@ namespace Sudoku.Views
                                 {
                                     numbers.Remove(value);
                                 }
-
                             }
                             else
                             {
@@ -389,43 +394,25 @@ namespace Sudoku.Views
                         else
                         {
                             ClearGameBoard(2);
-                            GenerateNewProblem(2);
+                            GenerateNewProblem();
                             return 0;
                         }
                     }
                 }
             }
-            if (mode == 1)
+            if (CheckGameBoard(GameField))
             {
-                if (CheckGameBoard(GameField))
-                {
-                    RemovingFields(5); //Medium difficulty
-                    return 1;
-                }
-                else
-                {
-                    ClearGameBoard(1);
-                    GenerateNewProblem(1);
-                    return 0;
-                }
+                RemovingFields(45);
+                return 1;
             }
             else
             {
-                if (CheckGameBoard(GameField))
-                {
-                    return 1;
-                }
-                else
-                {
-                    ClearGameBoard(2);
-                    GenerateNewProblem(2);
-                    return 0;
-                }
+                ClearGameBoard(1);
+                GenerateNewProblem();
+                return 0;
             }
-
-
         }
-        //Metoda pro odstranění políček
+        //Metoda, která odstraňuje políčka, aby vznikl validní problém
         public void RemovingFields(int difficulty)
         {
             int row;
@@ -443,7 +430,6 @@ namespace Sudoku.Views
                 GameField[row, col].Value = 0;
                 GameField[row, col].Writable = true;
                 difficulty -= 1;
-
             }
             for (int i = 0; i < 81; i++)
             {
@@ -456,7 +442,7 @@ namespace Sudoku.Views
                 }
             }
         }
-        //Kontrola vyřešeného problému
+        //Metoda, která zkontroluje, zda je problém úspěšně vyřešen
         public bool CheckProblem()
         {
             for(int i = 0; i < 9; i++)
@@ -465,7 +451,6 @@ namespace Sudoku.Views
                 {
                     if(GameField[i, j].Value != 0)
                     {
-                        
                         if(NotInRow(GameField[i, j].Value,i, GameField, 2))
                         {
                             if (NotInCol(GameField[i, j].Value, j, GameField,2))
@@ -479,21 +464,17 @@ namespace Sudoku.Views
                                 {
                                     return false;
                                 }
-                                
                             }
                             else
                             {
                                 return false;
                             }
-                            
                         }
                         else
                         {
                             return false;
                         }
-                      
                     }
-                    
                     else
                     {
                         return false;
@@ -502,18 +483,16 @@ namespace Sudoku.Views
             }
             return true;
         }
-
-
-
-        public async void SolveCurrentProblem()
+        //Metoda, která odstraní jednoznačné řešení políček
+        public void Simplification()
         {
             bool notSolved = true;
             int squareCount = 1;
+            int newFilledInValue = 0;
             int a1 = 0;
             int a2 = 0;
             int b1 = 0;
             int b2 = 0;
-
             while (notSolved)
             {
                 switch (squareCount)
@@ -533,6 +512,42 @@ namespace Sudoku.Views
                     case 3:
                         a1 = 0;
                         a2 = 2;
+                        b1 = 6;
+                        b2 = 8;
+                        break;
+                    case 4:
+                        a1 = 3;
+                        a2 = 5;
+                        b1 = 0;
+                        b2 = 2;
+                        break;
+                    case 5:
+                        a1 = 3;
+                        a2 = 5;
+                        b1 = 3;
+                        b2 = 5;
+                        break;
+                    case 6:
+                        a1 = 3;
+                        a2 = 5;
+                        b1 = 6;
+                        b2 = 8;
+                        break;
+                    case 7:
+                        a1 = 6;
+                        a2 = 8;
+                        b1 = 0;
+                        b2 = 2;
+                        break;
+                    case 8:
+                        a1 = 6;
+                        a2 = 8;
+                        b1 = 3;
+                        b2 = 5;
+                        break;
+                    case 9:
+                        a1 = 6;
+                        a2 = 8;
                         b1 = 6;
                         b2 = 8;
                         break;
@@ -557,7 +572,7 @@ namespace Sudoku.Views
                 {
                     for (int k = b1; k <= b2; k++)
                     {
-                        if(GameField[j, k].Writable == true)
+                        if (GameField[j, k].Writable == true)
                         {
                             possibleCellValue[temp1, temp2] = new List<int>();
                             foreach (var pv in possibleSquareValues)
@@ -567,7 +582,7 @@ namespace Sudoku.Views
                                     if (NotInCol(pv, k, GameField, 1))
                                     {
                                         possibleCellValue[temp1, temp2].Add(pv);
-                                        Info.Text += $"row: {j} coll: {k} = {pv}\n";
+                                        //Info.Text += $"row: {j} coll: {k} = {pv}\n";
                                     }
                                     else
                                     {
@@ -586,8 +601,8 @@ namespace Sudoku.Views
                     temp2 = 0;
                     temp1++;
                 }
-                //Otestovani zda nekde je pouze 1 možnost pro čísla
-                foreach(var i in possibleSquareValues)
+                //Otestování jednoznačné možnosti pro číslo
+                foreach (var i in possibleSquareValues)
                 {
                     temp1 = 0;
                     temp2 = 0;
@@ -596,7 +611,7 @@ namespace Sudoku.Views
                     {
                         for (int k = b1; k <= b2; k++)
                         {
-                            if(possibleCellValue[temp1, temp2] != null)
+                            if (possibleCellValue[temp1, temp2] != null)
                             {
                                 foreach (var l in possibleCellValue[temp1, temp2])
                                 {
@@ -619,14 +634,18 @@ namespace Sudoku.Views
                         {
                             for (int k = b1; k <= b2; k++)
                             {
-                                if(possibleCellValue[temp1, temp2] != null)
+                                if (possibleCellValue[temp1, temp2] != null)
                                 {
                                     foreach (var l in possibleCellValue[temp1, temp2])
                                     {
                                         if (l == i)
                                         {
-                                            GameField[j, k].Value = i;
-                                            GameField[j, k].Writable = false;
+                                            if (GameField[j, k].Value != i)
+                                            {
+                                                GameField[j, k].Value = i;
+                                                GameField[j, k].Writable = false;
+                                                newFilledInValue++;
+                                            }
                                         }
                                     }
                                 }
@@ -637,19 +656,23 @@ namespace Sudoku.Views
                         }
                     }
                 }
-                //Otestovaní zda nekde je pouze 1 možnost pro políčka
+                //Otestování jednoznačné možnosti pro políčko
                 temp1 = 0;
                 temp2 = 0;
                 for (int j = a1; j <= a2; j++)
                 {
                     for (int k = b1; k <= b2; k++)
                     {
-                        if(possibleCellValue[temp1,temp2] != null)
+                        if (possibleCellValue[temp1, temp2] != null)
                         {
                             if (possibleCellValue[temp1, temp2].Count == 1)
                             {
-                                GameField[j, k].Value = possibleCellValue[temp1, temp2][0];
-                                GameField[j, k].Writable = false;
+                                if (GameField[j, k].Value != possibleCellValue[temp1, temp2][0])
+                                {
+                                    GameField[j, k].Value = possibleCellValue[temp1, temp2][0];
+                                    GameField[j, k].Writable = false;
+                                    newFilledInValue++;
+                                }
                             }
                         }
                         temp2++;
@@ -662,23 +685,127 @@ namespace Sudoku.Views
                 {
                     int row = i / 9;
                     int col = i % 9;
-
                     TextFieldArray[i].Text = GameField[row, col].Value.ToString();
                     TextFieldArray[i].IsEnabled = GameField[row, col].Writable;
-
                 }
-                if(squareCount == 3)
+                if (CheckGameBoard(GameField) == true)
                 {
-                   notSolved = false;
+                    notSolved = false;
+                }
+                else if (squareCount == 9 && newFilledInValue == 0)
+                {
+                    notSolved = false;
+                }
+                else if (squareCount == 9 && newFilledInValue != 0)
+                {
+                    squareCount = 0;
+                    newFilledInValue = 0;
                 }
                 squareCount++;
-
-
             }
         }
+        //Metoda, která vygeneruje 2D pole, které bude obsahovat všechna možná řešení pro dané políčko
+        public List<int>[,] getPossibilities()
+        {
+            if (CheckGameBoard(GameField) == false)
+            {
+                var numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+                var possibilities = new List<int>[9, 9];
+                for(int i = 0; i < 9; i++)
+                {
+                    for(int j = 0; j < 9; j++)
+                    {
+                        if(GameField[i, j].Writable == true)
+                        {
+                            possibilities[i, j] = new List<int>();
+                            foreach(var pv in numbers)
+                            {
+                                if(NotInSquare(pv, j, i, GameField, 1))
+                                {
+                                    if (NotInRow(pv, i, GameField, 1))
+                                    {
+                                        if (NotInCol(pv, j, GameField, 1))
+                                        {
+                                            possibilities[i, j].Add(pv);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return possibilities;
+            }
+            return null;
+        }
+        //Metoda, která vyřeší daný problém
+        public void SolveCurrentProblem()
+        {
+            List<int>[,] numbers;
+            Random rnd = new Random();
+            for (int i = 0; i < 81; i++)
+            {
+                int row = i / 9;
+                int col = i % 9;
+                numbers = getPossibilities();
+                if (GameField[row, col].Writable == true)
+                {
+                    if(numbers[row, col].Count > 0)
+                    {
+                        for (int j = 0; j < numbers[row, col].Count; j++)
+                        {
+                            var value = numbers[row, col][rnd.Next(numbers[row, col].Count)];
+                            if (NotInRow(value, row, GameField, 1))
+                            {
+                                if (NotInCol(value, col, GameField, 1))
+                                {
+                                    if (NotInSquare(value, col, row, GameField, 1))
+                                    {
+                                        GameField[row, col].Value = value;
+                                        GameField[row, col].Writable = true;
+                                        TextFieldArray[i].Text = value.ToString();
+                                    }
+                                    else
+                                    {
+                                        numbers[row, col].Remove(value);
+                                    }
+                                }
+                                else
+                                {
+                                    numbers[row, col].Remove(value);
+                                }
 
+                            }
+                            else
+                            {
+                                numbers[row, col].Remove(value);
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            if (CheckGameBoard(GameField))
+            {
+                for (int i = 0; i < 81; i++)
+                {
+                    int row = i / 9;
+                    int col = i % 9;
+                    if (GameField[row, col].Writable == true)
+                    {
+                        GameField[row, col].Writable = false;
+                        TextFieldArray[i].Text = GameField[row, col].Value.ToString();
+                        TextFieldArray[i].IsEnabled = GameField[row, col].Writable;
+                    }
+                }
+            }
+            else
+            {
+                ClearGameBoard(2);
+                SolveCurrentProblem();
+            }
 
-
+        }
         private void MenuButton(object sender, RoutedEventArgs e)
         {
             if (MenuSplitView.IsPaneOpen == false)
@@ -698,7 +825,7 @@ namespace Sudoku.Views
         private void NewProblem(object sender, RoutedEventArgs e)
         {
             ClearGameBoard(1);
-            GenerateNewProblem(1);
+            GenerateNewProblem();
         }
         private async void Check(object sender, RoutedEventArgs e)
         {
@@ -716,19 +843,19 @@ namespace Sudoku.Views
         }
         private void SolveProblem(object sender, RoutedEventArgs e)
         {
-            //GenerateNewProblem(2);
-            SolveCurrentProblem();
+            Simplification();
+            if (!CheckGameBoard(GameField))
+            {
+                SolveCurrentProblem();
+            }
         }
-        
         private async void UploadTextFile(object sender, RoutedEventArgs e)
         {
             FileOpenPicker openPicker = new FileOpenPicker();
             openPicker.ViewMode = PickerViewMode.Thumbnail;
             openPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             openPicker.FileTypeFilter.Add(".txt");
-
             StorageFile file = await openPicker.PickSingleFileAsync();
-
             if(file != null)
             {
                 var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read); using
@@ -756,7 +883,6 @@ namespace Sudoku.Views
                                     }
                                     try
                                     { 
-                                        
                                         if (a != "")
                                         {
                                             var cell = Convert.ToInt32(a);
@@ -769,7 +895,6 @@ namespace Sudoku.Views
                                                 throw new SystemException();
                                             }
                                         }  
-                                        
                                     }
                                     catch
                                     {
@@ -778,7 +903,6 @@ namespace Sudoku.Views
                                         await  messageDialog.ShowAsync();
                                         return;
                                     }
-
                                 }
                                 if (numbers[i] != "0")
                                 {
@@ -808,9 +932,7 @@ namespace Sudoku.Views
                     }
                 }
             }
-            
         }
-
         private async void SaveTextFile(object sender, RoutedEventArgs e)
         {
             FileSavePicker savePicker = new FileSavePicker();
@@ -833,7 +955,6 @@ namespace Sudoku.Views
                 }
                 counter++;
             }
-
             StorageFile file = await savePicker.PickSaveFileAsync();
             if (file != null)
             {
