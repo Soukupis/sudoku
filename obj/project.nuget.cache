@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "waO3DFMFvcSbUd6XEYFBeEJtt97dF6U/U8Ag2THC0D06IP6UHuuwE6NcpD5G0K/eovl1G3RweBGRr4lGMAh3Dg==",
+  "dgSpecHash": "uoXkuaH0xdCDb0P33sxL3vWgFUaauQVjWC4hJ6V1DVUL0t+jfLDD+GwFR6/GhQpYuxrkWvMNjtMO0V4eceaDZw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\josep\\OneDrive\\Desktop\\Sudoku\\Sudoku.csproj",
+  "projectFilePath": "C:\\Users\\josep\\OneDrive\\Desktop\\SudokuProgress\\SudokuUpdate\\Sudoku.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\josep\\.nuget\\packages\\microsoft.net.native.compiler\\2.2.8-rel-28605-00\\microsoft.net.native.compiler.2.2.8-rel-28605-00.nupkg.sha512",
     "C:\\Users\\josep\\.nuget\\packages\\microsoft.net.uwpcoreruntimesdk\\2.2.10\\microsoft.net.uwpcoreruntimesdk.2.2.10.nupkg.sha512",

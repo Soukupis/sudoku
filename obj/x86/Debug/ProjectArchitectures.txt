@@ -1,1 +1,1 @@
-C:\Users\josep\OneDrive\Desktop\Sudoku\Sudoku.csproj;x86
+C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Sudoku.csproj;x86

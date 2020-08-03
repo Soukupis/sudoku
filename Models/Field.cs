@@ -11,9 +11,44 @@ namespace Sudoku.Models
     public class Field : INotifyPropertyChanged
     {
         private int _value;
+        private int _square;
         private bool _writable;
-        public int Value { get => _value; set { _value = value; NotifyPropertyChanged(); } }
+
+        public int Value
+        {
+            get => _value;
+            set
+            {
+                if ((value >= 0) && (value <= 9))
+                {
+                    _value = value;
+                }
+                else
+                {
+                    throw new System.ArgumentException("Číslo má špatné rozmezí");
+                }
+                NotifyPropertyChanged(); 
+            }
+        }
+        public int Square
+        {
+            get => _square;
+            set
+            {
+                if ((value >= 0) && (value <= 8))
+                {
+                    _square = value;
+                }
+                else
+                {
+                    throw new System.ArgumentException("Číslo má špatné rozmezí");
+                }
+                NotifyPropertyChanged();
+            }
+        }
         public bool Writable { get => _writable; set { _writable = value; NotifyPropertyChanged(); } }
+
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

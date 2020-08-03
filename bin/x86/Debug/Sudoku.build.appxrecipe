@@ -10,22 +10,22 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>152fd782-2d24-49a0-9563-a3d4dd8b7347</PackageIdentityName>
     <PackageIdentityPublisher>CN=josep</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\josep\OneDrive\Desktop\Sudoku\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Sudoku.exe">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Sudoku.exe">
       <PackagePath>entrypoint\Sudoku.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\josep\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
@@ -34,49 +34,49 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.18362.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Sudoku.xr.xml">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Sudoku.xr.xml">
       <PackagePath>Sudoku.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Views\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Views\MainPage.xbf">
       <PackagePath>Views\MainPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Views\ManualPage.xbf">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Views\ManualPage.xbf">
       <PackagePath>Views\ManualPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Views\GamePage.xbf">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Views\GamePage.xbf">
       <PackagePath>Views\GamePage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.18362.0\\redist\Debug\x86\ucrtbased.dll">
@@ -88,10 +88,10 @@
     <AppxPackagedFile Include="C:\Users\josep\.nuget\packages\microsoft.ui.xaml\2.4.2\buildTransitive\..\lib\uap10.0\Microsoft.UI.Xaml.winmd">
       <PackagePath>WinMetadata\Microsoft.UI.Xaml.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Core\Sudoku.exe">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Core\Sudoku.exe">
       <PackagePath>Sudoku.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

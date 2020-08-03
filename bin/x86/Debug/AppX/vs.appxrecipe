@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>152fd782-2d24-49a0-9563-a3d4dd8b7347</PackageIdentityName>
     <PackageIdentityPublisher>CN=josep</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\josep\OneDrive\Desktop\Sudoku\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,7 +18,7 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\AppX</LayoutDir>
     <RegisteredManifestChecksum>D7749D9411496BEF076AEC1D30CDFA30202FFA90783E989EF96FEAD082D39076</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>152fd782-2d24-49a0-9563-a3d4dd8b7347_1.0.0.0_x86__htsvse5medte6</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>152fd782-2d24-49a0-9563-a3d4dd8b7347_htsvse5medte6!App</RegisteredUserModeAppID>
@@ -27,16 +27,16 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-06-10T12:42:39.781</Modified>
+      <Modified>2020-08-03T14:05:32.867</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Sudoku.exe">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Sudoku.exe">
       <PackagePath>entrypoint\Sudoku.exe</PackagePath>
-      <Modified>2020-06-10T12:42:38.610</Modified>
+      <Modified>2020-08-03T14:05:31.539</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\josep\.nuget\packages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -46,63 +46,63 @@
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
       <Modified>2019-03-18T17:36:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2020-05-14T11:08:25.003</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2020-03-29T08:02:19.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-03-29T08:02:19.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-03-29T08:02:19.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-03-29T08:02:19.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-03-29T08:02:19.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-03-29T08:02:19.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-03-29T08:02:19.940</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Sudoku.xr.xml">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Sudoku.xr.xml">
       <PackagePath>Sudoku.xr.xml</PackagePath>
-      <Modified>2020-05-31T17:45:10.458</Modified>
+      <Modified>2020-08-03T14:05:31.242</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-06-10T12:42:38.278</Modified>
+      <Modified>2020-08-03T14:05:31.273</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Views\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Views\MainPage.xbf">
       <PackagePath>Views\MainPage.xbf</PackagePath>
-      <Modified>2020-06-10T12:42:38.278</Modified>
+      <Modified>2020-08-03T14:05:31.273</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Views\ManualPage.xbf">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Views\ManualPage.xbf">
       <PackagePath>Views\ManualPage.xbf</PackagePath>
-      <Modified>2020-06-10T12:42:38.279</Modified>
+      <Modified>2020-08-03T14:05:31.273</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Views\GamePage.xbf">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Views\GamePage.xbf">
       <PackagePath>Views\GamePage.xbf</PackagePath>
-      <Modified>2020-06-10T12:42:38.278</Modified>
+      <Modified>2020-08-03T14:05:31.273</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.18362.0\\redist\Debug\x86\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -116,13 +116,13 @@
       <PackagePath>WinMetadata\Microsoft.UI.Xaml.winmd</PackagePath>
       <Modified>2020-05-19T07:27:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-05-31T17:58:15.212</Modified>
+      <Modified>2020-08-03T13:38:59.544</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\Sudoku\bin\x86\Debug\Core\Sudoku.exe">
+    <AppxPackagedFile Include="C:\Users\josep\OneDrive\Desktop\SudokuProgress\SudokuUpdate\bin\x86\Debug\Core\Sudoku.exe">
       <PackagePath>Sudoku.exe</PackagePath>
-      <Modified>2020-06-10T12:42:39.775</Modified>
+      <Modified>2020-08-03T14:05:32.867</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

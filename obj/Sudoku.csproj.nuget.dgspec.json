@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\josep\\OneDrive\\Desktop\\Sudoku\\Sudoku.csproj": {}
+    "C:\\Users\\josep\\OneDrive\\Desktop\\SudokuProgress\\SudokuUpdate\\Sudoku.csproj": {}
   },
   "projects": {
-    "C:\\Users\\josep\\OneDrive\\Desktop\\Sudoku\\Sudoku.csproj": {
+    "C:\\Users\\josep\\OneDrive\\Desktop\\SudokuProgress\\SudokuUpdate\\Sudoku.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\josep\\OneDrive\\Desktop\\Sudoku\\Sudoku.csproj",
+        "projectUniqueName": "C:\\Users\\josep\\OneDrive\\Desktop\\SudokuProgress\\SudokuUpdate\\Sudoku.csproj",
         "projectName": "Sudoku",
-        "projectPath": "C:\\Users\\josep\\OneDrive\\Desktop\\Sudoku\\Sudoku.csproj",
+        "projectPath": "C:\\Users\\josep\\OneDrive\\Desktop\\SudokuProgress\\SudokuUpdate\\Sudoku.csproj",
         "packagesPath": "C:\\Users\\josep\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\josep\\OneDrive\\Desktop\\Sudoku\\obj\\",
+        "outputPath": "C:\\Users\\josep\\OneDrive\\Desktop\\SudokuProgress\\SudokuUpdate\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
