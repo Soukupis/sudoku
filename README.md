@@ -9,7 +9,7 @@
 * Vyřešení úlohy
 * Kontrola, zda uživatelem zadané řešení je správně
 
-###Vzhled
+### Vzhled
 * Menu s tlačítkama, které spouští jednotlivé funkce
 * Grid TextBoxu 9x9 nabindováný na pole
 
